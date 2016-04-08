@@ -5,6 +5,8 @@ before_script:
   - "npm install -g mocha"
 script:
   - "mocha -R spec spec.js"
+before_deploy:
+  - echo -e "Host csh-cloud.oweb.co\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 deploy:
   # - provider: script
   #   script: .travis/deploy_stage.sh
