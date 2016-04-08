@@ -1,0 +1,11 @@
+extends ./../layout
+
+block content
+  h1
+    | App:&nbsp;
+    = app.get('name')
+  h3
+    | API Key:&nbsp;
+    = app.get('api_key')
+  p: a(href='./' + app.get('id') + '/destroy') Destroy
+  p: a(href='./') &laquo; All apps

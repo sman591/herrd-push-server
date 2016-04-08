@@ -1,0 +1,15 @@
+extends ./../layout
+
+block content
+  h1 Create App
+  form(method='post', action='./')
+    p
+      | Name:
+      input(name='name')
+    p
+      | API Key:
+      input(name='api_key')
+    p
+      input(type='submit', value='Submit')
+
+  p: a(href='./') &laquo; All apps

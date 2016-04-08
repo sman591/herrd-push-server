@@ -1,0 +1,10 @@
+extends ./../layout
+
+block content
+  h1 Apps
+  if !apps.models.length
+    p No apps yet!
+  ul
+    each app in apps.models
+      li: a(href='/apps/' + app.get('id'))= app.get('name')
+  p: a(href='/apps/new') Create app &raquo;
