@@ -9,8 +9,11 @@ var flash = require('connect-flash');
 var User = require('./models/user');
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
+var rollbar = require("rollbar");
 
 require('dotenv').config();
+
+rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
 
 var app = express();
 
@@ -125,6 +128,7 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
+app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN));
 
 // development error handler
 // will print stacktrace
