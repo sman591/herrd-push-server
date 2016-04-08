@@ -11,3 +11,15 @@ $ npm install knex -g
 $ knex migrate:latest
 $ DEBUG=herrd-push-server:* ./bin/www
 ```
+
+## Environment Variables
+
+We use [dotenv](https://github.com/motdotla/dotenv) to simplify environment variable configuration.
+
+To get started quickly, simply:
+
+```bash
+$ cp .env.sample .env
+```
+
+And update the values in `.env`
