@@ -7,8 +7,10 @@ Push notification server for Herrd
 ```bash
 $ git pull git@github.com:Herrd/herrd-push-server.git
 $ npm install
-$ npm install knex -g
+$ npm install -g knex
+$ npm install -g bower
 $ knex migrate:latest
+$ bower install
 $ DEBUG=herrd-push-server:* ./bin/www
 ```
 

@@ -1,0 +1,21 @@
+{
+  "name": "herrd-push-server",
+  "description": "Push notification server for Herrd",
+  "main": "",
+  "authors": [
+    "Stuart Olivera"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Herrd/herrd-push-server",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
