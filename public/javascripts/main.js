@@ -1,6 +1,7 @@
 $('.players').each(function() {
   var container = this;
-  $.ajax('/api')
+  var api_key = $(container).data('api-key');
+  $.ajax('/api/players?api_key=' + api_key)
     .done(function(data) {
       $(container).html('');
       if (data.total_count < 1) {

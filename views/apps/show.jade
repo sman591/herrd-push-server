@@ -8,7 +8,7 @@ block content
     | API Key:&nbsp;
     = app.get('api_key')
   h3 OneSignal Players:
-  ul.players
+  ul.players(data-api-key="#{ app.get('api_key') }")
     | Loading...
   p: a(href='./' + app.get('id') + '/destroy') Destroy
   p: a(href='./') &laquo; All apps
