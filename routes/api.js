@@ -23,7 +23,8 @@ router.get('/players', function (req, res, next) {
       } else {
         var players = [];
         response.players.forEach(function(entry) {
-          if (entry.tags.app_name == app.get('name')) {
+          var user_id = entry.tags[app.get('name')];
+          if (user_id && user_id.length > 0) {
             players.push(entry);
           }
         });
@@ -46,16 +47,15 @@ router.post('/send', function (req, res, next) {
       app_id: process.env.ONESIGNAL_APP_ID,
       contents: req.body.contents,
       tags: [
-        { "key": "app_name", "relation": "=", "value": app.get('name')},
-        { "key": "user_id", "relation": "=", "value": req.body.user_id}
+        { "key": app.get('name'), "relation": "=", "value": req.body.user_id}
       ]
     };
     onesignal_client.notifications.create(process.env.ONESIGNAL_API_KEY, params, function (err, response) {
       if (err) {
         res.status(400).send('Invalid request')
       } else {
-        console.log(response);
         res.send('Success');
+        console.log(response);
       }
     });
   });
