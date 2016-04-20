@@ -15,10 +15,7 @@ router.get('/players', function (req, res, next) {
       return;
     }
     var params = {
-      app_id: process.env.ONESIGNAL_APP_ID,
-      tags: [
-        { "key": "app_name", "relation": "=", "value": app.get('name')}
-      ]
+      app_id: process.env.ONESIGNAL_APP_ID
     };
     onesignal_client.players.viewall(process.env.ONESIGNAL_API_KEY, params, function (err, response) {
       if (err) {
