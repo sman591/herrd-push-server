@@ -37,7 +37,7 @@ router.get('/players', function (req, res, next) {
 
 
 router.post('/send', function (req, res, next) {
-  App.where({ name: req.body.app_name, api_key: req.body.api_key }).fetch().then(function(app) {
+  App.where({ api_key: req.body.api_key }).fetch().then(function(app) {
     if (app == null) {
       res.status(404).send('Not found');
       return;
