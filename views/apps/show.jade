@@ -6,7 +6,10 @@ block content
     = app.get('name')
   h3
     | API Key:&nbsp;
-    = app.get('api_key')
+    br
+    pre
+      code= app.get('api_key')
+  a(href='./' + app.get('id') + '/regenerate') Regenerate API key &raquo;
   h3 OneSignal Players:
   ul.players(data-api-key="#{ app.get('api_key') }")
     | Loading...

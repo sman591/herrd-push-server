@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var App = require('./../models/app');
+var uuid = require('node-uuid');
 
 router.get('/', function(req, res, next) {
   App.fetchAll().then(function(apps) {
@@ -11,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function (req, res, next) {
   new App({
     name: req.body.name,
-    api_key: req.body.api_key
+    api_key: uuid.v4()
   }).save()
     .then(function (app) {
       res.redirect('/apps/' + app.get('id'))
@@ -27,6 +28,19 @@ router.get('/new', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   App.where('id', req.params.id).fetch().then(function(app) {
     res.render('apps/show', { app: app });
+  });
+});
+
+router.get('/:id/regenerate', function (req, res, next) {
+  App.where('id', req.params.id).fetch().then(function(app) {
+    app.set({
+      api_key: uuid.v4()
+    }).save()
+    .then(function (app) {
+      res.redirect('/apps/' + app.get('id'))
+    }).catch(function (error) {
+      res.send('An error occured');
+    })
   });
 });
 
