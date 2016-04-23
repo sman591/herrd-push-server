@@ -14,6 +14,15 @@ $ bower install
 $ DEBUG=herrd-push-server:* ./bin/www
 ```
 
+If you'd like to restart the server with each file change, install [nodemon](https://github.com/remy/nodemon):
+
+```bash
+$ npm install -g nodemon
+$ DEBUG=herrd-push-server:* nodemon bin/www
+```
+
+Either way, the server will now be running at [http://localhost:3000/](http://localhost:3000/).
+
 ## Environment Variables
 
 We use [dotenv](https://github.com/motdotla/dotenv) to simplify environment variable configuration.
