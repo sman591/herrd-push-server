@@ -67,7 +67,7 @@ passport.use('local-signup', new LocalStrategy({
               username: username,
               password: new User().generateHash(password)
             }).save()
-              .then(function (app) {
+              .then(function (user) {
                 return done(null, user);
               }).catch(function (error) {
                 return done(error);
