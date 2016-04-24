@@ -2,7 +2,8 @@ language: node_js
 node_js:
   - 0.12
 before_script:
-  - "npm install -g mocha"
+  - "npm install -g mocha knex"
+  - "knex migrate:latest"
   - "cp .env.sample .env"
 script:
   - "mocha -R spec spec.js"
