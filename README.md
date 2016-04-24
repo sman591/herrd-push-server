@@ -35,6 +35,12 @@ $ cp .env.sample .env
 
 And update the values in `.env`
 
+## User Authentication
+
+All administrative pages (such as `/apps/`) require authentication.
+
+The first user can be created by going to `/auth/signup`. After that, the sign up page will only work for logged in users.
+
 ## API Calls
 
 Each API call requires an `api_key` parameter. This API key is associated directly to a Discourse forum. API results will reflect actions directly for that Discourse forum - no need to pass in the hostname each time.

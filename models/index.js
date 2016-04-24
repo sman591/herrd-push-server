@@ -1,3 +1,4 @@
 module.exports = {
-  App: require('./app')
+  App: require('./app'),
+  User: require('./user')
 }

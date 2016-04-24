@@ -4,4 +4,6 @@ block content
   h1= title
   p Welcome to #{title}
   p: a(href="https://github.com/herrd/herrd-push-server") GitHub Repo &raquo;
-  p: a(href="/apps") Login &raquo;
+  if current_user
+    p: a(href="/apps") Apps &raquo;
+    p: a(href="/auth/signup") Create account &raquo;
