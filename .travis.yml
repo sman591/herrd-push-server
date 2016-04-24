@@ -3,6 +3,7 @@ node_js:
   - 0.12
 before_script:
   - "npm install -g mocha"
+  - "cp .env.sample .env"
 script:
   - "mocha -R spec spec.js"
 before_deploy:
