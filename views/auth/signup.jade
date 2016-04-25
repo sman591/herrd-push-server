@@ -5,9 +5,9 @@ block content
   form(action='/auth/signup', method='post')
     div
       label Username:
-      input(type='text', name='username', autofocus)
+      input(type='text', name='username', autofocus, required)
     div
       label Password:
-      input(type='password', name='password')
+      input(type='password', name='password', required)
     div
       input(type='submit', value='Sign Up')
