@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dokku": {
-      "postdeploy": "npm install -g knex && knex migrate:latest && LOCAL_USERNAME=`whoami` && curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN -F environment=$NODE_ENV -F revision=$GIT_REV -F local_username=$LOCAL_USERNAME"
+      "predeploy": "npm install -g knex && knex migrate:latest",
+      "postdeploy": "LOCAL_USERNAME=`whoami` && curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN -F environment=$NODE_ENV -F revision=$GIT_REV -F local_username=$LOCAL_USERNAME"
     }
   }
 }
