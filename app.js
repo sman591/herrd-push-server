@@ -9,10 +9,18 @@ var flash = require('connect-flash');
 var User = require('./models/user');
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
+var rollbar = require("rollbar");
 
 require('dotenv').config();
 
 var app = express();
+
+// error reporting
+if (app.get('env') === 'production') {
+  app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN, {
+    environment: app.get('env')
+  }));
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -124,7 +132,12 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+// error reporting
+if (app.get('env') === 'production') {
+  app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN, {
+    environment: app.get('env')
+  }));
+}
 
 // development error handler
 // will print stacktrace
