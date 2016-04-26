@@ -13,9 +13,14 @@ var rollbar = require("rollbar");
 
 require('dotenv').config();
 
-rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
-
 var app = express();
+
+// error reporting
+if (app.get('env') === 'production') {
+  app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN, {
+    environment: app.get('env')
+  }));
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -127,8 +132,12 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN));
+// error reporting
+if (app.get('env') === 'production') {
+  app.use(rollbar.errorHandler(process.env.ROLLBAR_ACCESS_TOKEN, {
+    environment: app.get('env')
+  }));
+}
 
 // development error handler
 // will print stacktrace
