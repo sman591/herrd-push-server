@@ -1,6 +1,6 @@
 # herrd-push-server [![Build Status](https://travis-ci.org/Herrd/herrd-push-server.svg?branch=master)](https://travis-ci.org/Herrd/herrd-push-server)
 
-Push notification server for Herrd
+Push notification server for Discourse powered by Herrd
 
 ## Getting Started
 
